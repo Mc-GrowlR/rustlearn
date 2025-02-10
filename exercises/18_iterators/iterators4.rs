@@ -10,6 +10,18 @@ fn factorial(num: u64) -> u64 {
     // - additional variables
     // For an extra challenge, don't use:
     // - recursion
+    if num <= 1 {
+        return 1;
+    }
+    //
+    // let mut sum = 1;
+    // let v = 1..=num;
+    // for n in v {
+    //     sum *= n;
+    // }
+    //
+    // sum
+    (1..=num).product()
 }
 
 fn main() {

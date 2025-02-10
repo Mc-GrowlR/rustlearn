@@ -1,3 +1,5 @@
+use std::ptr::slice_from_raw_parts_mut;
+
 struct Point {
     x: u64,
     y: u64,
@@ -46,6 +48,21 @@ impl State {
     fn process(&mut self, message: Message) {
         // TODO: Create a match expression to process the different message
         // variants using the methods defined above.
+        match message {
+            Message::Quit => {
+                self.quit = true;
+            }
+            Message::Resize { width, height } => {
+                self.resize(width, height);
+            }
+            Message::ChangeColor(r, g, b) => self.change_color(r, g, b),
+            Message::Move(point) => {
+                self.move_position(point);
+            }
+            Message::Echo(s) => {
+                self.echo(s);
+            }
+        };
     }
 }
 
